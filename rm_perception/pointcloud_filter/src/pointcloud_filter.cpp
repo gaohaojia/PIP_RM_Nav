@@ -38,13 +38,13 @@ class pointcloud_filter : public rclcpp::Node
         pcl::PointCloud<pcl::PointXYZI>::Ptr cloud(new pcl::PointCloud<pcl::PointXYZI>);
         pcl::fromROSMsg(*cloud_msg, *cloud);
     
-        box_filter1.setMin(Eigen::Vector4f(-5.0, -5.0, -5.0, 1.0)); // y, x, z
+        box_filter1.setMin(Eigen::Vector4f(-5.0, -5.0, -5.0, 1.0));
         box_filter1.setMax(Eigen::Vector4f(0.0, 5.0, 5.0, 1.0));
         box_filter1.setNegative(true);
         box_filter1.setInputCloud(cloud);
         box_filter1.filter(*cloud);
         
-        box_filter2.setMin(Eigen::Vector4f(-0.6, -0.6, -5.0, 1.0)); // y, x, z
+        box_filter2.setMin(Eigen::Vector4f(-0.6, -0.6, -5.0, 1.0));
         box_filter2.setMax(Eigen::Vector4f(0.6, 0.6, 5.0, 1.0));
         box_filter2.setNegative(true);
         box_filter2.setInputCloud(cloud);
